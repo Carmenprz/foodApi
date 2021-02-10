@@ -13,7 +13,14 @@ class StoreTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $response = $this->postJson('/api/dishes', ['name' => 'Veggie Massala', 'image' => 'dish.jpeg']);
+        $response = $this->
+            postJson('/api/dishes', [
+                'name' => 'Veggie Massala', 
+                'subtitle' => 'with rice', 
+                'price' => 20, 
+                'description' => 'xfbfdb', 
+                'image' => 'dish.jpeg'
+                ]);
 
         $response
             ->assertStatus(201)

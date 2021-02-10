@@ -23,6 +23,9 @@ class DishFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'subtitle' => $this->faker->sentence,
+            'price' => 20, 
+            'description' => $this->faker->text, 
             'image' => $this->faker->sentence, 
         ];
     }

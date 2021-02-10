@@ -12,9 +12,10 @@ class GetDishesTest extends TestCase
     use RefreshDatabase;
     public function test_get_all_dishes()
     {
-        $dishes = Dish::factory()->create(4);
+        $this->withoutExceptionHandling();
+        $dish = Dish::factory()->create();
 
-        $response = $this->getJson('/api/dishes', $dishes);
+        $response = $this->getJson(route('dishes.index', $dish), $dish->toArray());
 
         $response->assertStatus(200);
     }

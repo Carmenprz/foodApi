@@ -39,6 +39,9 @@ class DishController extends Controller
     {
         $dish = Dish::create([
             'name' => $request->name, 
+            'subtitle' => $request->subtitle, 
+            'price' => $request->price, 
+            'description' => $request->description, 
             'image' => $request->image
         ]); 
 
@@ -55,7 +58,9 @@ class DishController extends Controller
      */
     public function show($id)
     {
-        //
+        $dish = Dish::findOrFail($id); 
+
+        return response()->json($dish, 200);
     }
 
     /**
@@ -83,6 +88,9 @@ class DishController extends Controller
 
             $request->validate([
                 'name' => 'required', 
+                'subtitle' => 'required', 
+                'price' => 'required', 
+                'description' => 'required', 
                 'image' => 'required'
             ]);
 
@@ -100,7 +108,7 @@ class DishController extends Controller
     public function destroy($id)
     {
         try {
-            $dishToDelete = Dish::findOrFail($id, 'Dish not found');
+            $dishToDelete = Dish::findOrFail($id);
             
             $dishToDelete->delete();
             return response()->json($dishToDelete, 204);
@@ -109,7 +117,6 @@ class DishController extends Controller
 
             return response()->json(['message' => 'dish not found!'], 404);
         }
-
 
     }
 }

@@ -22,6 +22,9 @@ class UpdateTest extends TestCase
 
         $dishUpdate = [
             'name' => 'Hummus',
+            'subtitle' => 'dfbtb',
+            'price' => 20,
+            'description' => 'dfbtb',
             'image' => 'dfbtb',
         ];
 
